@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="cardEffect"
+            type="com.kevin.funratings.model.CardEffect" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvEvoText"
+            style="@style/baseFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="@dimen/med_large_margin"
+            android:text="@{cardEffect.evoText}"
+            android:visibility="@{!cardEffect.evoText.empty}"
+            />
+
+        <TextView
+            android:id="@+id/tvAtk"
+            style="@style/baseFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="@id/tvEvoText"
+            app:layout_constraintStart_toEndOf="@id/tvEvoText"
+            app:layout_constraintBottom_toBottomOf="@id/tvEvoText"
+            android:background="@drawable/stat_icon_background"
+            android:backgroundTint="#0000FF"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="16dp"
+            android:text="@{cardEffect.attack}"
+            android:visibility="@{!cardEffect.attack.empty}"
+            />
+
+        <TextView
+            android:id="@+id/tvHp"
+            style="@style/baseFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/stat_icon_background"
+            android:backgroundTint="#FF0000"
+            android:textColor="#FFFFFF"
+            app:layout_constraintTop_toTopOf="@id/tvEvoText"
+            app:layout_constraintStart_toEndOf="@id/tvAtk"
+            app:layout_constraintBottom_toBottomOf="@id/tvEvoText"
+            android:layout_marginStart="16dp"
+            android:text="@{cardEffect.hp}"
+            android:visibility="@{!cardEffect.hp.empty}"
+            />
+
+        <TextView
+            android:id="@+id/tvCardEffect"
+            style="@style/baseFont"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvEvoText"
+            layoutMarginTop="@{!cardEffect.evoText.empty ? @dimen/med_large_margin : @dimen/zerodp}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
+            app:layout_constraintWidth_percent=".85"
+            android:text="@{cardEffect.effect}"
+            />
+
+        <TextView
+            android:id="@+id/tvCardDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvCardEffect"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            style="@style/baseFont"
+            android:textSize="12sp"
+            android:textColor="@color/desc_colour_text"
+            android:text="@{cardEffect.description}"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

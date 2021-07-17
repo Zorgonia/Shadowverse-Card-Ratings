@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="homeCard"
+            type="com.kevin.funratings.model.HomeCard" />
+
+        <variable
+            name="rows"
+            type="Integer" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivImageCard"
+            imageToLoad="@{homeCard.image}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/loxis_test" />
+
+        <ImageView
+            android:id="@+id/ivImageTitle"
+            imageToLoad="@{homeCard.textImage}"
+            android:layout_width="0dp"
+            android:layout_height="@{rows == 2 ? @dimen/two_row_height : @dimen/three_row_height, default=@dimen/two_row_height}"
+            layoutMarginTop="@{rows == 2 ? @dimen/two_row_top_margin : @dimen/three_row_top_margin}"
+            android:elevation="1dp"
+            android:paddingStart="@{rows == 2 ? @dimen/two_row_start_padding : @dimen/three_row_start_padding}"
+            android:paddingEnd="@{rows == 2 ? @dimen/two_row_end_padding : @dimen/three_row_end_padding}"
+            app:layout_constraintEnd_toEndOf="@id/ivImageCard"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/ivImageCard"
+            app:layout_constraintTop_toTopOf="@id/ivImageCard"
+            tools:srcCompat="@drawable/loxis_title_test" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

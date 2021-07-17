@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glQuarter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glHalf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glThreeQuarter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.825"/>
+
+        <TextView
+            android:id="@+id/tvColumnIdText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/colour_header_background"
+            android:paddingTop="@dimen/med_margin"
+            android:paddingBottom="@dimen/med_margin"
+            android:text="@string/id_text"
+            android:fontFamily="@font/roboto_bold"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@id/glQuarter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tvColumnNameText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/med_margin"
+            android:paddingBottom="@dimen/med_margin"
+            android:background="@drawable/colour_header_background"
+            android:text="@string/name_text"
+            android:fontFamily="@font/roboto_bold"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@id/glQuarter"
+            app:layout_constraintEnd_toEndOf="@id/glHalf"
+            app:layout_constraintTop_toTopOf="@id/tvColumnIdText"
+            />
+
+        <TextView
+            android:id="@+id/tvColumnRatingText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/med_margin"
+            android:paddingBottom="@dimen/med_margin"
+            android:background="@drawable/colour_header_background"
+            android:text="@string/rating_text"
+            android:fontFamily="@font/roboto_bold"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@id/glHalf"
+            app:layout_constraintEnd_toEndOf="@id/glThreeQuarter"
+            app:layout_constraintTop_toTopOf="@id/tvColumnIdText"
+            />
+
+        <TextView
+            android:id="@+id/tvColumnClanText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/med_margin"
+            android:paddingBottom="@dimen/med_margin"
+            android:background="@drawable/colour_header_background"
+            android:text="@string/clan_text"
+            android:fontFamily="@font/roboto_bold"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@id/glThreeQuarter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvColumnIdText"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAllRatings"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvColumnIdText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

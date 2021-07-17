@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">FunRatings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="clear_database">Clear database</string>
+    <string name="all_ratings">All Ratings</string>
+    <string name="id_text">id</string>
+    <string name="name_text">Name</string>
+    <string name="rating_text">Rating</string>
+    <string name="clan_text">Class</string>
+    <string name="test_text">ndingjdofsdfsdiof</string>
+    <string name="deck_code_hint">Enter Your Deck Code Here</string>
+    <string name="confirm">Confirm</string>
+    <string name="copy_portal_link">Copy Portal Link</string>
+    <string name="share_portal_link">Share Portal Link</string>
+    <string name="deck_code_length_error">Deck codes are 4 characters in length.</string>
+    <string name="deck_code_error">An error occurred with code %s</string>
+    <string name="deck_code_success">Deck Retrieved! with code %s</string>
+    <string name="open_portal_link">Open Portal Link</string>
+    <string name="open_deckbuilder_link">Open Deckbuilder Link</string>
+
+
+
+</resources>

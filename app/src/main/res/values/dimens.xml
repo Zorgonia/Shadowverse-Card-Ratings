@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="zerodp">0dp</dimen>
+    <dimen name="higherdp">100dp</dimen>
+    <dimen name="small_margin">4dp</dimen>
+    <dimen name="med_margin">8dp</dimen>
+    <dimen name="med_large_margin">12dp</dimen>
+    <dimen name="two_row_start_padding">40dp</dimen>
+    <dimen name="two_row_end_padding">24dp</dimen>
+    <dimen name="two_row_top_margin">26dp</dimen>
+    <dimen name="two_row_height">11dp</dimen>
+    <dimen name="three_row_top_margin">55dp</dimen>
+    <dimen name="three_row_start_padding">26dp</dimen>
+    <dimen name="three_row_end_padding">16dp</dimen>
+
+    <dimen name="three_row_height">8dp</dimen>
+
+</resources>

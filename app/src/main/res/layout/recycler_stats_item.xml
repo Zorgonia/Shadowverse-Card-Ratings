@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="rating"
+            type="com.kevin.funratings.room.Ratings" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glQuarter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glHalf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glThreeQuarter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.825"/>
+
+        <TextView
+            android:id="@+id/tvRatingId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{rating.id}"
+            android:padding="6dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@id/glQuarter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <TextView
+            android:id="@+id/tvRatingName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{rating.name}"
+            android:padding="6dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@id/glHalf"
+            app:layout_constraintStart_toStartOf="@id/glQuarter"
+            android:ellipsize="end"
+            app:layout_constraintTop_toTopOf="@id/tvRatingId"
+            />
+
+        <TextView
+            android:id="@+id/tvRatingNum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            ratingTextSetup="@{rating.rating}"
+            android:padding="6dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@id/glThreeQuarter"
+            app:layout_constraintStart_toStartOf="@id/glHalf"
+            app:layout_constraintTop_toTopOf="@id/tvRatingId"
+            />
+
+        <TextView
+            android:id="@+id/tvRatingClan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{rating.clan}"
+            android:textAlignment="center"
+            android:padding="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/glThreeQuarter"
+            app:layout_constraintTop_toTopOf="@id/tvRatingId"
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

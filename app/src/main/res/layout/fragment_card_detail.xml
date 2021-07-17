@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.kevin.funratings.model.CardDetail" />
+        <variable
+            name="followData"
+            type="com.kevin.funratings.model.FollowerCardDetail" />
+        <variable
+            name="viewModel"
+            type="com.kevin.funratings.detail.CardFragmentViewModel" />
+
+        <import type="com.kevin.funratings.detail.CardDetailState"/>
+        <import type="android.view.View"/>
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glHalf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".5"/>
+
+            <TextView
+                android:id="@+id/tvCardTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{data.name}"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivCardPicture"
+                imageToLoad="@{followData != null ? followData.image : data.image}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardTitle"
+                android:visibility="@{viewModel.state() == CardDetailState.NotEvoState.INSTANCE ? View.VISIBLE : View.INVISIBLE}"
+                android:onClick="@{(view) -> viewModel.changeShowEvo(followData == null)}"
+                tools:srcCompat="@drawable/loxis_test" />
+
+            <ImageView
+                android:id="@+id/ivCardTitleImage"
+                imageToLoad="@{followData != null ? followData.imageText : data.imageText}"
+
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="@dimen/two_row_top_margin"
+                android:paddingStart="@dimen/two_row_start_padding"
+                android:paddingEnd="@dimen/two_row_end_padding"
+                android:elevation="1dp"
+                app:layout_constraintEnd_toEndOf="@id/ivCardPicture"
+                app:layout_constraintStart_toStartOf="@id/ivCardPicture"
+                app:layout_constraintTop_toTopOf="@id/ivCardPicture"
+                android:visibility="@{viewModel.state() == CardDetailState.NotEvoState.INSTANCE ? View.VISIBLE : View.INVISIBLE}"
+                android:onClick="@{(view) -> viewModel.changeShowEvo(followData == null)}"
+                tools:srcCompat="@drawable/loxis_title_test" />
+
+            <ImageView
+                android:id="@+id/ivCardPictureEvo"
+                imageToLoad="@{followData != null ? followData.evoImage : data.image}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardTitle"
+                android:visibility="@{viewModel.state() == CardDetailState.EvoState.INSTANCE ? View.VISIBLE : View.GONE}"
+                android:onClick="@{(view) -> viewModel.changeShowEvo(false)}"
+                tools:srcCompat="@drawable/loxis_test" />
+
+            <ImageView
+                android:id="@+id/ivCardTitleImageEvo"
+                imageToLoad="@{followData != null ? followData.evoImageText : data.imageText}"
+                android:layout_width="0dp"
+                android:visibility="@{viewModel.state() == CardDetailState.EvoState.INSTANCE ? View.VISIBLE : View.GONE}"
+                android:layout_height="10dp"
+                android:layout_marginTop="@dimen/two_row_top_margin"
+                android:paddingStart="@dimen/two_row_start_padding"
+                android:paddingEnd="@dimen/two_row_end_padding"
+                android:elevation="1dp"
+                app:layout_constraintEnd_toEndOf="@id/ivCardPictureEvo"
+                app:layout_constraintStart_toStartOf="@id/ivCardPictureEvo"
+                app:layout_constraintTop_toTopOf="@id/ivCardPictureEvo"
+                android:onClick="@{(view) -> viewModel.changeShowEvo(false)}"
+                tools:srcCompat="@drawable/loxis_title_test" />
+
+    <!--        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.formatSidebar()}"
+                app:layout_constraintStart_toEndOf="@id/ivCardPicture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardTitle"/>-->
+
+            <TextView
+                android:id="@+id/tvCardType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/med_margin"
+                style="@style/baseFont"
+                app:layout_constraintStart_toEndOf="@id/glHalf"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardTitle"
+                android:text="@{data.sidebarDetail.type}"/>
+
+            <TextView
+                android:id="@+id/tvCardClan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/small_margin"
+                style="@style/baseFont"
+                app:layout_constraintStart_toStartOf="@id/tvCardType"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardType"
+                android:text="@{data.sidebarDetail.clan}"/>
+
+            <TextView
+                android:id="@+id/tvCardRarity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/small_margin"
+                style="@style/baseFont"
+                app:layout_constraintStart_toStartOf="@id/tvCardType"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardClan"
+                android:text="@{data.sidebarDetail.rarity}"/>
+
+            <TextView
+                android:id="@+id/tvCardVialCost"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/small_margin"
+                style="@style/baseFont"
+                app:layout_constraintStart_toStartOf="@id/tvCardType"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardRarity"
+                android:text="@{data.sidebarDetail.vialCost}"/>
+
+            <TextView
+                android:id="@+id/tvCardVialBack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/small_margin"
+                style="@style/baseFont"
+                app:layout_constraintStart_toStartOf="@id/tvCardType"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardVialCost"
+                android:text="@{data.sidebarDetail.vialRefund}"/>
+
+            <TextView
+                android:id="@+id/tvCardCV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/small_margin"
+                style="@style/baseFont"
+                app:layout_constraintStart_toStartOf="@id/tvCardType"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardVialBack"
+                android:text="@{data.sidebarDetail.cv}"
+                android:visibility="@{!data.sidebarDetail.cv.empty}"/>
+
+            <TextView
+                android:id="@+id/tvCardCardpack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/small_margin"
+                style="@style/baseFont"
+                app:layout_constraintStart_toStartOf="@id/tvCardType"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCardCV"
+                android:text="@{data.sidebarDetail.cardpack}"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCardEffects"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                app:layout_constraintTop_toBottomOf="@id/ivCardPicture"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvRelatedHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvCardEffects"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{data.relatedText}"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_marginStart="@dimen/med_large_margin"
+                android:layout_marginTop="@dimen/med_large_margin"
+                android:visibility="@{!data.relatedText.empty}"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRelated"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvRelatedHeading"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:overScrollMode="never"
+                android:visibility="@{!data.relatedCards.empty}">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <RatingBar
+                android:id="@+id/rbRatings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvRelated" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
